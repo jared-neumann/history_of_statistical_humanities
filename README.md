@@ -4,4 +4,5 @@
 
 To review the projects currently on display, please launch the streamlit app:
 
-python -m streamlit run streamlit/main.py
+```cd streamlit```
+```python -m streamlit run streamlit/main.py```
