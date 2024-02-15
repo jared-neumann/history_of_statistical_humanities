@@ -13,8 +13,21 @@ st.session_state.shakespeare_data_2 = None
 # Load the data (you can replace this with your data loading code)
 @st.cache_resource
 def load_shakespeare_data():
-    data_1 = pd.read_csv('data/Jevons_table_1.csv')
-    data_2 = pd.read_csv('data/Jevons_table_2.csv', index_col=0)
+    try:
+        data_1 = pd.read_csv('data/Jevons_table_1.csv')
+        data_2 = pd.read_csv('data/Jevons_table_2.csv', index_col=0)
+    except:
+        try:
+            data_1 = pd.read_csv('streamlit/data/Jevons_table_1.csv')
+            data_2 = pd.read_csv('streamlit/data/Jevons_table_2.csv', index_col=0)
+        except:
+            try:
+                data_1 = pd.read_csv('https://raw.githubusercontent.com/jared-neumann/statistical-humanities-projects/main/data/Jevons_table_1.csv')
+                data_2 = pd.read_csv('https://raw.githubusercontent.com/jared-neumann/statistical-humanities-projects/main/data/Jevons_table_2.csv', index_col=0)
+            except Exception as e:
+                logging.error(f'Error loading Shakespearean literature data: {e}')
+                st.error('Error loading Shakespearean literature data')
+                return None, None
     return data_1, data_2
 
 if not st.session_state.shakespeare_data_1 or not st.session_state.shakespeare_data_2:
