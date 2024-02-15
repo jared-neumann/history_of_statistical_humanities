@@ -1,0 +1,34 @@
+# .gitignore
+
+# environments
+*.env
+*.env.*
+*.local
+*.local.*
+.venv
+.venv.*
+env
+env.*
+venv
+venv.*
+
+# logs
+*.log
+*.log.*
+
+# cache
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.cache
+*.so
+*.egg-info
+*.egg
+
+# config
+*.cfg
+*.conf
+*.ini
+*.yaml
+*.yml
