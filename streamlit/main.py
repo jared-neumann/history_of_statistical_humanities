@@ -25,8 +25,8 @@ def load_shakespeare_data():
                 data_1 = pd.read_csv('https://raw.githubusercontent.com/jared-neumann/statistical-humanities-projects/main/data/Jevons_table_1.csv')
                 data_2 = pd.read_csv('https://raw.githubusercontent.com/jared-neumann/statistical-humanities-projects/main/data/Jevons_table_2.csv', index_col=0)
             except Exception as e:
-                logging.error(f'Error loading Shakespearean literature data: {e}')
-                st.error('Error loading Shakespearean literature data')
+                logging.error(f'Error loading Shakspearean literature data: {e}')
+                st.error('Error loading Shakspearean literature data')
                 return None, None
     return data_1, data_2
 
@@ -34,12 +34,12 @@ if not st.session_state.shakespeare_data_1 or not st.session_state.shakespeare_d
     try:
         st.session_state.shakespeare_data_1, st.session_state.shakespeare_data_2 = load_shakespeare_data()
     except Exception as e:
-        logging.error(f'Error loading Shakespearean literature data: {e}')
-        st.error('Error loading Shakespearean literature data')
+        logging.error(f'Error loading Shakspearean literature data: {e}')
+        st.error('Error loading Shakspearean literature data')
 
 # Sidebar content
 st.sidebar.title('Navigation')
-page_selection = st.sidebar.radio("Choose a project page", ["Home", "Shakespearean literature"])
+page_selection = st.sidebar.radio("Choose a project page", ["Home", "Jevons, Shakspearean literature (1864)"])
 
 st.sidebar.title('About')
 st.sidebar.info('Author: Jared Neumann')
@@ -62,7 +62,7 @@ if page_selection == "Home":
     st.write('Statistical humanities is a subfield of digital humanities that uses statistical methods to analyze humanities data. This can include text analysis, network analysis, and other methods. The field has been around for a long time, but has been called different things over the years.')
 
 # Shakespearean Literature Page
-elif page_selection == "Shakespearean literature":
+elif page_selection == "Jevons, Shakspearean literature (1864)":
 
     title = """SHAKSPEAREAN LITERATURE"""
     byline = """<div style="text-align: justify;">William Stanley Jevons, Owens College, Manchester, March 5, 1864</div>"""
