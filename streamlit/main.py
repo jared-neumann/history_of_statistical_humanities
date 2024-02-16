@@ -24,22 +24,21 @@ def load_shakespeare_data():
         data_1 = pd.read_csv('data/jevons_table_1.csv')
         data_2 = pd.read_csv('data/jevons_table_2.csv', index_col=0)
         # read txt file for shakespeare_markdown
-        with open('text_copy/jevons_shakspearian_literature.txt', 'r') as file:
-            shakespeare_markdown = file.read()
+        shakespeare_markdown = open('text_copy/jevons_shakspearian_literature.txt', 'r').read() 
     except:
+        logging.error('Could not load local data, trying from the Streamlit directory')
         try:
             data_1 = pd.read_csv('streamlit/data/jevons_table_1.csv')
             data_2 = pd.read_csv('streamlit/data/jevons_table_2.csv', index_col=0)
             # read txt file for data_3
-            with open('streamlit/text_copy/jevons_shakspearian_literature.txt', 'r') as file:
-                shakespeare_markdown = file.read()
+            shakespeare_markdown = open('streamlit/text_copy/jevons_shakspearian_literature.txt', 'r').read()
         except:
+            logging.error('Could not load data from the Streamlit directory, trying from the GitHub repository')
             try:
                 data_1 = pd.read_csv('https://raw.githubusercontent.com/jared-neumann/statistical-humanities-projects/main/data/jevons_table_1.csv')
                 data_2 = pd.read_csv('https://raw.githubusercontent.com/jared-neumann/statistical-humanities-projects/main/data/jevons_table_2.csv', index_col=0)
                 # read txt file for data_3
-                with open('https://raw.githubusercontent.com/jared-neumann/statistical-humanities-projects/main/text_copy/jevons_shakspearian_literature.txt', 'r') as file:
-                    shakespeare_markdown = file.read()
+                shakespeare_markdown = open('https://raw.githubusercontent.com/jared-neumann/statistical-humanities-projects/main/text_copy/jevons_shakspearian_literature.txt', 'r').read()
             except Exception as e:
                 logging.error(f'Error loading Shakspearian literature data: {e}')
                 st.error('Error loading Shakspearian literature data')
