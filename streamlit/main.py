@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import io
 import base64
+import os
 import matplotlib.pyplot as plt
 import logging
 
@@ -27,6 +28,7 @@ def load_shakespeare_data():
         shakespeare_markdown = open('text_copy/jevons_shakspearian_literature.txt', 'r').read() 
     except:
         logging.error('Could not load local data, trying from the Streamlit directory')
+        logging.info('Current directory: ' + os.getcwd())
         try:
             data_1 = pd.read_csv('streamlit/data/jevons_table_1.csv')
             data_2 = pd.read_csv('streamlit/data/jevons_table_2.csv', index_col=0)
